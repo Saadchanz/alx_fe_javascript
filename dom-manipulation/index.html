@@ -1,48 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Dynamic Quote Generator</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Quote Generator - Server Sync</title>
 </head>
 <body>
-  <main class="container">
-    <h1>Dynamic Quote Generator</h1>
+  <h1>Dynamic Quote Generator (Server Sync & Conflict Resolution)</h1>
 
-    <section class="controls">
-      <div class="left">
-        <select id="categoryFilter">
-          <option value="all">All Categories</option>
-        </select>
+  <!-- Category Filter -->
+  <label for="categoryFilter">Filter by Category:</label>
+  <select id="categoryFilter" onchange="filterQuotes()">
+    <option value="all">All Categories</option>
+  </select>
 
-        <button id="newQuote">Show New Quote</button>
-        <button id="showAll">Show All Quotes</button>
-      </div>
+  <!-- Display Area -->
+  <div id="quoteDisplay"></div>
 
-      <div class="right">
-        <button id="exportJson">Export JSON</button>
-        <input id="importFile" type="file" accept=".json" />
-        <button id="syncNow">Sync Now</button>
-      </div>
-    </section>
+  <!-- Buttons -->
+  <button id="newQuote">Show Random Quote</button>
+  <button id="exportQuotes">Export Quotes</button>
+  <button id="syncQuotes">Sync with Server</button>
 
-    <section id="quoteArea">
-      <div id="quoteDisplay" class="quote-card">Press "Show New Quote" or select a category.</div>
-      <div id="quoteList" class="quote-list" hidden></div>
-    </section>
+  <!-- Notifications -->
+  <div id="notification" style="color: green; margin-top: 10px;"></div>
 
-    <section id="addSection" class="add-section">
-      <h2>Add a New Quote</h2>
-      <form id="addForm">
-        <input id="newQuoteText" type="text" placeholder="Enter a new quote" required />
-        <input id="newQuoteCategory" type="text" placeholder="Enter quote category" required />
-        <button type="submit">Add Quote</button>
-      </form>
-    </section>
-
-    <section id="notifications" class="notifications" aria-live="polite"></section>
-  </main>
+  <!-- Form for Adding Quotes -->
+  <div id="formContainer"></div>
 
   <script src="script.js"></script>
 </body>
